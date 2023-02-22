@@ -5,7 +5,7 @@ import { View, TextInput, StyleSheet, Alert } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 
 
-function StartScreen() {
+function StartScreen({onPickNumber}) {
 
     const [enteredNumber, setEnteredNumber] = useState('');
 
@@ -21,6 +21,8 @@ function StartScreen() {
             return;
         
         }
+
+        onPickNumber(choosenNumber);
     }
 
     function resetInputHandler() {
