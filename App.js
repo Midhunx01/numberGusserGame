@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, } from 'react-native';
+import { SafeAreaView, StyleSheet, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import StartScreen from './screens/StartScreen';
@@ -17,14 +17,17 @@ export default function App() {
   let screen = <StartScreen onPickNumber={onPickNumberHandler} />
 
   if (userNumber) {
-    screen = <GameScreen/>
+    screen = <GameScreen />
   }
 
 
 
   return (
     <LinearGradient colors={['#A810D6', '#4512DB']} style={styles.rootContainer} >
-      {screen}
+      <SafeAreaView style={styles.rootContainer} >
+        {screen}
+      </SafeAreaView>
+
     </LinearGradient>
 
   );
