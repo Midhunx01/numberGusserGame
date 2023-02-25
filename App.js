@@ -10,7 +10,8 @@ import GameOverScreen from './screens/GameOverScreen';
 export default function App() {
 
   const [userNumber, setUserNumber] = useState();
-  const [gameIsOver, setGameIsOver] = useState(true)
+  const [gameIsOver, setGameIsOver] = useState(true);
+  const [gameRounds, setGameRounds] = useState(0);
 
   function onPickNumberHandler(choosenNumber) {
     setUserNumber(choosenNumber);
@@ -21,6 +22,11 @@ export default function App() {
     setGameIsOver(true);
   }
 
+  function  startNewGameHandler() {
+    setUserNumber(null);
+    setGameRounds(0);
+  }
+
   let screen = <StartScreen onPickNumber={onPickNumberHandler} />
 
   if (userNumber) {
@@ -28,7 +34,7 @@ export default function App() {
   }
 
   if (gameIsOver && userNumber ) {
-    screen = <GameOverScreen/>
+    screen = <GameOverScreen userNumber={userNumber} gameRounds={gameRounds} onGameOver={startNewGameHandler}/>
   }
 
 
